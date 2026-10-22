@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="대구광역시 구·군별 아파트 시장 흐름을 탐색하는 인터랙티브 대시보드" />
+  <title>대구 아파트 인사이트</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="suseong.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="대구 아파트 인사이트 홈"><span class="brand-mark">D</span><span>DAEGU<br><b>APARTMENT</b></span></a>
+      <nav aria-label="주요 메뉴">
+        <a class="active" href="#overview"><span>01</span>시장 개요</a>
+        <a href="#rankings"><span>02</span>단지 랭킹</a>
+        <a href="#transactions"><span>03</span>거래 흐름</a>
+        <a href="#location"><span>04</span>입지 분석</a>
+      </nav>
+      <div class="sidebar-note"><span class="pulse"></span><div><b>데모 데이터</b><small>UI 시연용 표본</small></div></div>
+      <p class="sidebar-foot">DATA EDITION<br>OCTOBER 2026</p>
+    </aside>
+
+    <main id="top">
+      <header class="topbar">
+        <div><p class="eyebrow">SUSEONG-GU HOUSING MARKET</p><h1>수성구 아파트<br><em>시장 인사이트</em></h1></div>
+        <div class="top-actions"><span class="date">2026.10</span><button id="downloadBtn">데이터 내려받기 ↗</button></div>
+      </header>
+
+      <section class="notice" role="note"><b>데모 안내</b> 화면의 수치는 기능 확인을 위한 샘플이며 투자 판단에 사용할 수 없습니다. 실제 서비스에서는 국토교통부 실거래가 공개시스템 API 연결이 필요합니다.</section>
+
+      <section class="filters" aria-label="데이터 필터">
+        <label>생활권<select id="districtFilter"><option value="all">수성구 전체</option><option>범어·만촌</option><option>황금·두산</option><option>수성·중동</option><option>지산·범물</option><option>시지·고산</option></select></label>
+        <label>면적<select id="sizeFilter"><option value="all">전체 면적</option><option value="small">60㎡ 이하</option><option value="mid">60–85㎡</option><option value="large">85㎡ 초과</option></select></label>
+        <label>기간<select id="periodFilter"><option value="12">최근 12개월</option><option value="6">최근 6개월</option><option value="3">최근 3개월</option></select></label>
+        <button class="reset" id="resetBtn">필터 초기화</button>
+      </section>
+
+      <section id="overview" class="metrics" aria-label="핵심 지표">
+        <article class="metric hero-metric"><p>평균 매매 실거래가</p><div><strong id="avgPrice">7.21</strong><span>억원</span></div><small class="up">▲ 2.9% <i>전년 동월 대비</i></small></article>
+        <article class="metric"><p>평균 전세 실거래가</p><div><strong>4.06</strong><span>억원</span></div><small class="up">▲ 1.4% <i>전년 동월 대비</i></small></article>
+        <article class="metric"><p>월세 보증금 / 월세</p><div><strong class="compact-value">8,200 / 118</strong><span>만원</span></div><small class="neutral">― 0.3% <i>전월 대비</i></small></article>
+        <article class="metric"><p>월 실거래량</p><div><strong id="volume">198</strong><span>건</span></div><small class="down">▼ 4.8% <i>전월 대비</i></small></article>
+      </section>
+
+      <section id="transactions" class="grid charts">
+        <article class="panel trend-panel">
+          <div class="panel-head"><div><span class="kicker">TRANSACTION PRICE INDEX</span><h2>실거래가 가격지수</h2></div><div class="tabs" data-target="chart"><button class="active" data-type="sale">매매</button><button data-type="jeonse">전세</button><button data-type="monthly">월세</button></div></div>
+          <div id="lineChart" class="line-chart" role="img" aria-label="월별 평균 매매가 및 거래량 차트"></div>
+        </article>
+        <article class="panel pulse-panel">
+          <div class="panel-head"><div><span class="kicker">MARKET PULSE</span><h2>시장 온도</h2></div><span class="status">관망 우세</span></div>
+          <div class="gauge"><div class="gauge-ring"><strong id="score">58</strong><span>/ 100</span></div></div>
+          <div class="scale"><span>매수 우위</span><b></b><span>매도 우위</span></div>
+          <p>가격은 완만히 회복 중이지만 거래량은 전월 대비 감소했습니다.</p>
+        </article>
+      </section>
+
+      <section id="rankings" class="grid lower rank-grid">
+        <article class="panel"><div class="panel-head"><div><span class="kicker">TOP TRANSACTIONS</span><h2>실거래가 TOP 10</h2></div><div class="tabs" data-target="dealRank"><button class="active" data-type="sale">매매</button><button data-type="jeonse">전세</button><button data-type="monthly">월세</button></div></div><div id="dealRank" class="rank-list"></div></article>
+        <article class="panel"><div class="panel-head"><div><span class="kicker">PRICE PER 3.3㎡</span><h2>평당가격 TOP 10</h2></div><div class="tabs" data-target="pyeongRank"><button class="active" data-type="sale">매매</button><button data-type="jeonse">전세</button><button data-type="monthly">월세</button></div></div><div id="pyeongRank" class="rank-list"></div></article>
+      </section>
+      <section id="location" class="panel location-panel"><div class="panel-head"><div><span class="kicker">LOCATION ANALYSIS</span><h2>입지 분석</h2></div><span class="unit">카드를 눌러 상세 분석을 확인하세요</span></div><div id="locationCards" class="location-cards"></div><div id="locationDetail" class="location-detail" aria-live="polite"></div></section>
+
+      <section id="complexes" class="panel table-panel">
+        <div class="panel-head"><div><span class="kicker">RECENT DEALS</span><h2>최근 거래 단지</h2></div><label class="search"><span>⌕</span><input id="searchInput" placeholder="단지명 검색" /></label></div>
+        <div class="table-wrap"><table><thead><tr><th>단지명</th><th>지역</th><th>전용면적</th><th>거래가</th><th>거래일</th><th>층</th></tr></thead><tbody id="dealRows"></tbody></table></div>
+      </section>
+      <footer><span>DAEGU APARTMENT INSIGHT</span><p>샘플 데이터 기반 UI 프로토타입 · 실제 수치 사용 전 데이터 원천을 검증하세요.</p><a href="#top">맨 위로 ↑</a></footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
