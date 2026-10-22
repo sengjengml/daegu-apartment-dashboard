@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="suseong.css" />
   <link rel="stylesheet" href="font.css" />
   <link rel="stylesheet" href="filters.css" />
+  <link rel="stylesheet" href="map.css" />
 </head>
 <body>
   <div class="shell">
@@ -71,14 +72,23 @@
       </section>
       <section id="location" class="panel location-panel"><div class="panel-head"><div><span class="kicker">LOCATION ANALYSIS</span><h2>입지 분석</h2></div><span class="unit">카드를 눌러 상세 분석을 확인하세요</span></div><div id="locationCards" class="location-cards"></div><div id="locationDetail" class="location-detail" aria-live="polite"></div></section>
 
-      <section id="complexes" class="panel table-panel">
-        <div class="panel-head"><div><span class="kicker">RECENT DEALS</span><h2>최근 거래 단지</h2></div><label class="search"><span>⌕</span><input id="searchInput" placeholder="단지명 검색" /></label></div>
-        <div class="table-wrap"><table><thead><tr><th>단지명</th><th>지역</th><th>전용면적</th><th>거래가</th><th>거래일</th><th>층</th></tr></thead><tbody id="dealRows"></tbody></table></div>
+      <section id="complexes" class="property-explorer">
+        <article class="panel table-panel">
+          <div class="panel-head"><div><span class="kicker">RECENT DEALS</span><h2>최근 거래 단지</h2></div><label class="search"><span>⌕</span><input id="searchInput" placeholder="단지명 검색" /></label></div>
+          <p class="map-help">단지를 누르면 지도에서 위치를 확인할 수 있습니다.</p>
+          <div class="table-wrap"><table><thead><tr><th>단지명</th><th>지역</th><th>전용면적</th><th>거래가</th><th>거래일</th><th>층</th></tr></thead><tbody id="dealRows"></tbody></table></div>
+        </article>
+        <article class="panel map-panel">
+          <div class="panel-head"><div><span class="kicker">LOCATION MAP</span><h2 id="mapTitle">수성구 지도</h2><span class="data-context" id="mapContext">수성구 전체 · 2026.10 기준</span></div><a id="openMapLink" target="_blank" rel="noopener">큰 지도 ↗</a></div>
+          <div class="map-frame"><iframe id="apartmentMap" title="선택 지역 아파트 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="map-pin-label" id="mapPinLabel">수성구 전체</div></div>
+          <p class="map-caption">지도: OpenStreetMap 기여자 · 위치는 화면 시연을 위한 근사 좌표입니다.</p>
+        </article>
       </section>
       <footer><span>DAEGU APARTMENT INSIGHT</span><p>샘플 데이터 기반 UI 프로토타입 · 실제 수치 사용 전 데이터 원천을 검증하세요.</p><a href="#top">맨 위로 ↑</a></footer>
     </main>
   </div>
   <script src="app.js"></script>
   <script src="filters.js"></script>
+  <script src="map.js"></script>
 </body>
 </html>
