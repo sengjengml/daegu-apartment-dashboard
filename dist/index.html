@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="font.css" />
   <link rel="stylesheet" href="filters.css" />
   <link rel="stylesheet" href="map.css" />
+  <link rel="stylesheet" href="focus.css" />
 </head>
 <body>
   <div class="shell">
@@ -44,6 +45,19 @@
         <label>면적<select id="sizeFilter"><option value="all">전체 면적</option><option value="small">60㎡ 이하</option><option value="mid">60–85㎡</option><option value="large">85㎡ 초과</option></select></label>
         <label>기간<select id="periodFilter"><option value="12">최근 12개월</option><option value="6">최근 6개월</option><option value="3">최근 3개월</option></select></label>
         <button class="reset" id="resetBtn">필터 초기화</button>
+      </section>
+
+      <section id="focusComplex" class="focus-complex">
+        <div class="focus-header"><div><span class="focus-badge">FOCUS COMPLEX</span><p>대구광역시 수성구 수성로35길 50</p><h2>수성푸르지오리버센트</h2><div class="focus-meta"><span>2024년 준공</span><span>714세대 · 10개동</span><span>전용 84–110㎡</span></div></div><div class="focus-price"><span>최근 84㎡ 실거래</span><strong>7억 2,000만</strong><small>2026.07.11 · 11층</small></div></div>
+        <div class="focus-layout">
+          <div class="focus-analysis">
+            <div class="focus-kpis"><article><span>84㎡ 1년 범위</span><b>6.85–8.80억</b><small>20건 · 3.3㎡당 3,053만</small></article><article><span>110㎡ 1년 범위</span><b>8.00–9.85억</b><small>4건 · 3.3㎡당 2,762만</small></article><article><span>전세 중앙값</span><b>3.60억</b><small>전세가율 약 47.7%</small></article></div>
+            <article class="focus-chart-card"><div class="focus-card-head"><div><span class="kicker">MONTHLY PRICE</span><h3>월별 평균 실거래가</h3></div><div class="focus-switch"><button class="active" data-area="84">전용 84㎡</button><button data-area="110">전용 110㎡</button></div></div><div id="focusPriceChart"></div></article>
+            <article class="compare-card"><div class="focus-card-head"><div><span class="kicker">NEARBY COMPARISON</span><h3>주변 아파트 비교</h3></div><span>전용 84㎡ 최근 거래 기준</span></div><div id="nearbyCompare"></div><p class="compare-note">거래일·층·향이 달라 단순 가격 차이를 가치 차이로 해석하면 안 됩니다.</p></article>
+          </div>
+          <aside class="focus-map-card"><div class="focus-card-head"><div><span class="kicker">COMPLEX MAP</span><h3 id="focusMapTitle">수성푸르지오리버센트</h3></div><a id="focusMapLink" target="_blank" rel="noopener">큰 지도 ↗</a></div><div class="focus-map-wrap"><iframe id="focusMap" title="수성푸르지오리버센트와 주변 아파트 지도" loading="lazy"></iframe><div class="focus-map-label" id="focusMapLabel">분석 대상</div></div><div id="focusMapPlaces" class="focus-map-places"></div><div class="focus-insight"><b>가격 해석</b><p>신축 프리미엄과 84㎡ 거래 회전이 확인되지만 최근 거래 범위가 넓습니다. 같은 면적에서도 층과 동에 따라 가격 편차가 커 개별 거래 조건 확인이 필요합니다.</p></div></aside>
+        </div>
+        <div class="focus-sources"><span>DATA CHECK · 2026.10.22</span><a href="https://cy-on.kr/trades/17000/" target="_blank" rel="noopener">실거래 자료</a><a href="https://kbland.kr/se/c/293447" target="_blank" rel="noopener">단지 정보</a><a href="https://house.ttpk.co.kr/region/27260/%EC%A4%91%EB%8F%99/apt" target="_blank" rel="noopener">중동 비교</a></div>
       </section>
 
       <section id="overview" class="metrics" aria-label="핵심 지표">
@@ -90,5 +104,6 @@
   <script src="app.js"></script>
   <script src="filters.js"></script>
   <script src="map.js"></script>
+  <script src="focus.js"></script>
 </body>
 </html>
