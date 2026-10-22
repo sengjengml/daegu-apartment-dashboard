@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="suseong.css" />
   <link rel="stylesheet" href="font.css" />
+  <link rel="stylesheet" href="filters.css" />
 </head>
 <body>
   <div class="shell">
@@ -28,14 +29,17 @@
 
     <main id="top">
       <header class="topbar">
-        <div><p class="eyebrow">SUSEONG-GU HOUSING MARKET</p><h1>수성구 아파트<br><em>시장 인사이트</em></h1></div>
-        <div class="top-actions"><span class="date">2026.10</span><button id="downloadBtn">데이터 내려받기 ↗</button></div>
+        <div><p class="eyebrow" id="marketEyebrow">SUSEONG-GU HOUSING MARKET</p><h1><span id="marketTitle">수성구</span> 아파트<br><em>시장 인사이트</em></h1></div>
+        <div class="top-actions"><span class="date" id="selectedDate">2026.10</span><button id="downloadBtn">데이터 내려받기 ↗</button></div>
       </header>
 
       <section class="notice" role="note"><b>데모 안내</b> 화면의 수치는 기능 확인을 위한 샘플이며 투자 판단에 사용할 수 없습니다. 실제 서비스에서는 국토교통부 실거래가 공개시스템 API 연결이 필요합니다.</section>
 
-      <section class="filters" aria-label="데이터 필터">
-        <label>생활권<select id="districtFilter"><option value="all">수성구 전체</option><option>범어·만촌</option><option>황금·두산</option><option>수성·중동</option><option>지산·범물</option><option>시지·고산</option></select></label>
+      <section class="filters region-filters" aria-label="데이터 필터">
+        <label>시·도<select id="cityFilter"><option value="대구광역시">대구광역시</option></select></label>
+        <label>구·군<select id="districtFilter"></select></label>
+        <label>읍·면·동<select id="dongFilter"></select></label>
+        <label>기준월<input id="dateFilter" type="month" min="2024-01" max="2026-10" value="2026-10"></label>
         <label>면적<select id="sizeFilter"><option value="all">전체 면적</option><option value="small">60㎡ 이하</option><option value="mid">60–85㎡</option><option value="large">85㎡ 초과</option></select></label>
         <label>기간<select id="periodFilter"><option value="12">최근 12개월</option><option value="6">최근 6개월</option><option value="3">최근 3개월</option></select></label>
         <button class="reset" id="resetBtn">필터 초기화</button>
@@ -43,8 +47,8 @@
 
       <section id="overview" class="metrics" aria-label="핵심 지표">
         <article class="metric hero-metric"><p>평균 매매 실거래가</p><div><strong id="avgPrice">7.21</strong><span>억원</span></div><small class="up">▲ 2.9% <i>전년 동월 대비</i></small></article>
-        <article class="metric"><p>평균 전세 실거래가</p><div><strong>4.06</strong><span>억원</span></div><small class="up">▲ 1.4% <i>전년 동월 대비</i></small></article>
-        <article class="metric"><p>월세 보증금 / 월세</p><div><strong class="compact-value">8,200 / 118</strong><span>만원</span></div><small class="neutral">― 0.3% <i>전월 대비</i></small></article>
+        <article class="metric"><p>평균 전세 실거래가</p><div><strong id="avgJeonse">4.06</strong><span>억원</span></div><small class="up">▲ 1.4% <i>전년 동월 대비</i></small></article>
+        <article class="metric"><p>월세 보증금 / 월세</p><div><strong class="compact-value" id="monthlyAvg">8,200 / 118</strong><span>만원</span></div><small class="neutral">― 0.3% <i>전월 대비</i></small></article>
         <article class="metric"><p>월 실거래량</p><div><strong id="volume">198</strong><span>건</span></div><small class="down">▼ 4.8% <i>전월 대비</i></small></article>
       </section>
 
@@ -75,5 +79,6 @@
     </main>
   </div>
   <script src="app.js"></script>
+  <script src="filters.js"></script>
 </body>
 </html>
